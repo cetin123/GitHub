@@ -721,7 +721,7 @@ render(){
              <TouchableOpacity
              style={{flex:1,justifyContent:'center',alignItems:'center',backgroundColor: 'rgba(45,100,250,0.50)',height:30}}
              onPress={this.chooseFile.bind(this)}  >
-             <Text style={{fontWeight: 'bold',color:'white',fontSize:15}}>Görevi Güncelle</Text>
+             <Text style={{fontWeight: 'bold',color:'white',fontSize:15}}>Görevi Kaydet</Text>
              </TouchableOpacity>
              </View>
         </ScrollView>

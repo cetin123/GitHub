@@ -8,7 +8,7 @@ import mission from './mission.js';
 import report from './report.js';
 import assign from './assign.js';
 import view from './view.js';
-
+import update from './update.js';
 
 
 const AppNavigator=createStackNavigator(
@@ -20,7 +20,8 @@ perspage:{screen:perspage},
 mission:{screen:mission},
 report:{screen:report},
 assign:{screen:assign},
-view:{screen:view}
+view:{screen:view},
+update:{screen:update}
 
 
 },
