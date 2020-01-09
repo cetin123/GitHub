@@ -85,7 +85,7 @@ export default class report extends Component{
 
        chooseFile = () => {
       var options = {
-        title: 'Select Image',
+        title: 'Fotoğraf Yükle',
         customButtons: [
           { name: 'customOptionKey', title: 'Choose Photo from Custom Option' },
         ],
@@ -190,50 +190,43 @@ checkboxTest2(){
   }
   }
   checkboxTest4(){
-    this.setState({
-      check1:!this.state.check1
-    })
+    this.setState({check1:!this.state.check1 })
    if(this.state.check1==true)
    {
-     
-   this.setState({completedshow: false, });
+   this.setState({completedshow: false,});
    }
    else {
-   this.setState({ completedshow: true,check3:false,check2:false,check4:false });
-   } }
+   this.setState({ completedshow: true,check3:false,check2:false,check4:false,postponedshow:false });
+   }
+   }
   checkboxTest5(){
-    this.setState({
-      check2:!this.state.check2
-     })
+    this.setState({check2:!this.state.check2})
     if(this.state.check2==true)
     {
-    this.setState({ });
+    this.setState({  });
     }
     else {
-    this.setState({ check4:false,check3:false,check1:false });
-    } }
+    this.setState({ check3:false,check1:false,check4:false,postponedshow:false,completedshow: false });
+    }
+    }
   checkboxTest6(){
-    this.setState({
-      check3:!this.state.check3
-     })
-    if(this.state.check3==true)
-    {
-    this.setState({ });
-    }
-    else {
-    this.setState({check4:false,check2:false,check1:false });
-    } 
-  }
+    this.setState({check3:!this.state.check3 })
+            if(this.state.check3==true)
+            {
+            this.setState({  });
+            }
+            else {
+            this.setState({ check2:false,check1:false,check4:false,postponedshow:false,completedshow: false});
+            }
+      }
   checkboxTest7(){
-    this.setState({
-      check4:!this.state.check4
-     })
+    this.setState({check4:!this.state.check4})
     if(this.state.check4==true)
     {
-    this.setState({ postponedshow: false, });
+    this.setState({ postponedshow: false });
     }
     else {
-    this.setState({ postponedshow: true ,check3:false,check2:false,check1:false });
+    this.setState({ postponedshow: true,check3:false,check1:false,check2:false,completedshow: false });
     } 
   }
   checkboxTest8(){
@@ -694,25 +687,43 @@ render(){
                          markedDates={{[this.state.Selected3]: {selected: true,mrked:true, selectedColor: 'green'}}}
                          />
                         ) : null}
-                <Image
-            source={{
+               <Image
+         /*  source={{
               uri: 'data:image/jpeg;base64,' + this.state.filePath.data,
             }}
-            style={{ width: 100, height: 100 }}
+            style={{ width: 100, height: 100 }}*/
           />
+           <View style={styles.photo}>
+                                     <Text style={ {fontSize:16,color:'aliceblue',fontWeight: 'bold',}}>
+                                         Fotoğraf
+                                     </Text>
+                                  </View>
+         < View style={{alignItems:"center",marginTop:0,}}>
           <Image
             source={{ uri: this.state.filePath.uri }}
-            style={{ width: 250, height: 250 }}
+            style={{ width: 200, height: 200, alignItems:'center',borderWidth:2,borderColor:'rgba(45,100,250,0.50)',backgroundColor:'aliceblue'}}
           />
-          <Text style={{ alignItems: 'center' }}>
-             
-
-            {this.state.filePath.path}
-          </Text>
-          <Button title="Choose File" onPress={this.chooseFile.bind(this)} />
+        </View>
+        <View style={styles.filetransfer}>
+             <TouchableOpacity
+             style={{flex:1,justifyContent:'center',alignItems:'center',marginRight:10,backgroundColor: 'rgba(45,100,250,0.50)',height:30}}
+             onPress={this.chooseFile.bind(this)}  >
+             <Text style={{fontWeight: 'bold',color:'white',fontSize:15}}>Dosya Seçiniz</Text>
+             </TouchableOpacity>
          
-            <Button title="Upload" onPress={this.handleUploadPhoto} />
-        
+             <TouchableOpacity
+             style={{flex:1,justifyContent:'center',alignItems:'center',backgroundColor: 'rgba(45,100,250,0.50)',height:30}}
+             OnPress={this.handleUploadPhoto} >
+             <Text style={{fontWeight: 'bold',color:'white',fontSize:15}}>Fotoğraf Gönder</Text>
+             </TouchableOpacity>
+           </View>
+           <View style={styles.saved}>
+             <TouchableOpacity
+             style={{flex:1,justifyContent:'center',alignItems:'center',backgroundColor: 'rgba(45,100,250,0.50)',height:30}}
+             onPress={this.chooseFile.bind(this)}  >
+             <Text style={{fontWeight: 'bold',color:'white',fontSize:15}}>Görevi Güncelle</Text>
+             </TouchableOpacity>
+             </View>
         </ScrollView>
     </ImageBackground>
   );
@@ -854,5 +865,41 @@ projectstatus:{
       alignItems:"center",
       justifyContent:"center",
     },
+    saved:{
+    
+      marginTop:10,
+      
+      borderRadius:5,
+      flex:1,
+      height:35,
+      marginHorizontal:90,
+      marginBottom:20,
+     
+      textAlign:'center',
+      justifyContent:'center'
+     
+    },
+    photo:{
+      flex:1,
+      alignItems:"center",
+      justifyContent:"center",
+      backgroundColor:'rgba(45,100,250,0.50)',
+      marginTop:20,
+      borderWidth:2,
+      marginHorizontal:105,
+      borderColor:'skyblue',
+      },
+     filetransfer:{
+        flexDirection:"row",
+        marginTop:10,
+        borderRadius:5,
+        flex:1,
+        height:35,
+        marginHorizontal:50,
+        marginBottom:20,
+        padding:10,
+        textAlign:'center',
+        justifyContent:'center'
+     }
  },);
     

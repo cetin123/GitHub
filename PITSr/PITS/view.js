@@ -49,7 +49,7 @@ export default class view extends Component{
      })
     if(this.state.check2==true)
     {
-    this.setState({ show2: false });
+    this.setState({  });
     }
     else {
     this.setState({ show2: true,check3:false,check1:false,check4:false,postponedshow:false,completedshow: false });
@@ -321,7 +321,7 @@ render(){
                     />
                        <View style={styles.saved}>
              <TouchableOpacity
-             style={{flex:1,justifyContent:'center',alignItems:'center'}}
+             style={{flex:1,justifyContent:'center',alignItems:'center',backgroundColor:'rgba(45,100,250,0.50)',marginTop:10}}
              onPress={() => {this.props.navigation.navigate('assign')}} 
      
            >
@@ -429,6 +429,43 @@ render(){
                          markedDates={{[this.state.Selected1]: {selected: true,mrked:true, selectedColor: 'green'}}}
                          />
                         ) : null}
+                                 <Image
+         /*  source={{
+              uri: 'data:image/jpeg;base64,' + this.state.filePath.data,
+            }}
+            style={{ width: 100, height: 100 }}*/
+          />
+           <View style={styles.photo}>
+                                     <Text style={ {fontSize:16,color:'aliceblue',fontWeight: 'bold',}}>
+                                         Fotoğraf
+                                     </Text>
+                                  </View>
+         < View style={{alignItems:"center",marginTop:0,}}>
+          <Image
+            source={{ uri: this.state.filePath.uri }}
+            style={{ width: 200, height: 200, alignItems:'center',borderWidth:2,borderColor:'rgba(45,100,250,0.50)',backgroundColor:'aliceblue'}}
+          />
+        </View>
+        <View style={styles.filetransfer}>
+             <TouchableOpacity
+             style={{flex:1,justifyContent:'center',alignItems:'center',marginRight:10,backgroundColor: 'rgba(45,100,250,0.50)',height:30}}
+             onPress={this.chooseFile.bind(this)}  >
+             <Text style={{fontWeight: 'bold',color:'white',fontSize:15}}>Dosya Seçiniz</Text>
+             </TouchableOpacity>
+         
+             <TouchableOpacity
+             style={{flex:1,justifyContent:'center',alignItems:'center',backgroundColor: 'rgba(45,100,250,0.50)',height:30}}
+             OnPress={this.handleUploadPhoto} >
+             <Text style={{fontWeight: 'bold',color:'white',fontSize:15}}>Fotoğraf Gönder</Text>
+             </TouchableOpacity>
+           </View>
+           <View style={styles.saved}>
+             <TouchableOpacity
+             style={{flex:1,justifyContent:'center',alignItems:'center',backgroundColor: 'rgba(45,100,250,0.50)',height:30}}
+             onPress={this.chooseFile.bind(this)}  >
+             <Text style={{fontWeight: 'bold',color:'white',fontSize:15}}>Görevi Güncelle</Text>
+             </TouchableOpacity>
+             </View>
       </ScrollView>
     </ImageBackground>
   );} 
@@ -476,7 +513,7 @@ wall1:{
     alignItems:"center",
     justifyContent:"center",
     backgroundColor:'rgba(45,100,250,0.50)',
-    marginTop:10,
+    marginTop:5,
     borderWidth:2,
     marginHorizontal:40,
     borderColor:'skyblue'
@@ -492,14 +529,19 @@ wall2:{
     borderColor:'skyblue'
 },
 saved:{
-    marginTop:10,
-    backgroundColor: 'rgba(45,100,250,0.50)',
-    borderRadius:5,
-    flex:1,
-    height:35,
-    marginHorizontal:90,
-    marginBottom:20
-  },
+    
+  marginTop:10,
+  
+  borderRadius:5,
+  flex:1,
+  height:35,
+  marginHorizontal:90,
+  marginBottom:20,
+ 
+  textAlign:'center',
+  justifyContent:'center'
+ 
+},
   projectstatus:{
     flex:1,
     alignItems:"center",
@@ -511,14 +553,36 @@ saved:{
     borderColor:'skyblue',
     },
     date:{
-        flex:1,
-        backgroundColor:'rgba(45,100,250,0.50)',
+     flex:1,
+    backgroundColor:'rgba(45,100,250,0.50)',
         marginTop:10,
         borderWidth:2,
         borderColor:'skyblue',
         alignItems:"center",
         justifyContent:"center",
         marginHorizontal:40
+        },
+        filetransfer:{
+          flexDirection:"row",
+          marginTop:10,
+          borderRadius:5,
+          flex:1,
+          height:35,
+          marginHorizontal:50,
+          marginBottom:20,
+          padding:10,
+          textAlign:'center',
+          justifyContent:'center'
+       },
+       photo:{
+        flex:1,
+        alignItems:"center",
+        justifyContent:"center",
+        backgroundColor:'rgba(45,100,250,0.50)',
+        marginTop:20,
+        borderWidth:2,
+        marginHorizontal:105,
+        borderColor:'skyblue',
         },
   },);
     
